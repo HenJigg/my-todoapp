@@ -1,6 +1,7 @@
 ﻿using MyToDo.Common.Models;
 using MyToDo.Service;
 using MyToDo.Shared.Dtos;
+using MyToDo.Shared.Parameters;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -21,8 +22,28 @@ namespace MyToDo.ViewModels
         {
             ToDoDtos = new ObservableCollection<ToDoDto>();
             ExecuteCommand = new DelegateCommand<string>(Execute);
-            SelectedCommand = new DelegateCommand<ToDoDto>(Selected); 
+            SelectedCommand = new DelegateCommand<ToDoDto>(Selected);
+            DeleteCommand = new DelegateCommand<ToDoDto>(Delete);
             this.service = service;
+        }
+
+        private async void Delete(ToDoDto obj)
+        {
+            try
+            {
+                UpdateLoading(true);
+                var deleteResult = await service.DeleteAsync(obj.Id);
+                if (deleteResult.Status)
+                {
+                    var model = ToDoDtos.FirstOrDefault(t => t.Id.Equals(obj.Id));
+                    if (model != null)
+                        ToDoDtos.Remove(model);
+                }
+            }
+            finally
+            {
+                UpdateLoading(false);
+            } 
         }
 
         private void Execute(string obj)
@@ -34,6 +55,18 @@ namespace MyToDo.ViewModels
                 case "保存": Save(); break;
             }
         }
+
+        private int selectedIndex;
+
+        /// <summary>
+        /// 下拉列表选中状态值
+        /// </summary>
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set { selectedIndex = value; RaisePropertyChanged(); }
+        }
+
 
         private string search;
 
@@ -145,7 +178,8 @@ namespace MyToDo.ViewModels
         }
 
         public DelegateCommand<string> ExecuteCommand { get; private set; }
-        public DelegateCommand<ToDoDto> SelectedCommand { get; private set; } 
+        public DelegateCommand<ToDoDto> SelectedCommand { get; private set; }
+        public DelegateCommand<ToDoDto> DeleteCommand { get; private set; }
 
         private ObservableCollection<ToDoDto> toDoDtos;
         private readonly IToDoService service;
@@ -163,11 +197,14 @@ namespace MyToDo.ViewModels
         {
             UpdateLoading(true);
 
-            var todoResult = await service.GetAllAsync(new Shared.Parameters.QueryParameter()
+            int? Status = SelectedIndex == 0 ? null : SelectedIndex == 2 ? 1 : 0;
+
+            var todoResult = await service.GetAllFilterAsync(new ToDoParameter()
             {
                 PageIndex = 0,
                 PageSize = 100,
                 Search = Search,
+                Status = Status
             });
 
             if (todoResult.Status)

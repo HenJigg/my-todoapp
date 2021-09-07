@@ -27,10 +27,10 @@ namespace MyToDo.Api.Service
         {
             try
             {
-                var todo = Mapper.Map<Memo>(model);
-                await work.GetRepository<Memo>().InsertAsync(todo);
+                var memo = Mapper.Map<Memo>(model);
+                await work.GetRepository<Memo>().InsertAsync(memo);
                 if (await work.SaveChangesAsync() > 0)
-                    return new ApiResponse(true, model);
+                    return new ApiResponse(true, memo);
                 return new ApiResponse("添加数据失败");
             }
             catch (Exception ex)
