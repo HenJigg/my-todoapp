@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="MyToDo.Views.Dialogs.AddToDoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             mc:Ignorable="d"  Width="450" Height="280" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Padding="20,10"
+            Text="添加待办" FontWeight="Bold" FontSize="20" />
+
+        <DockPanel Grid.Row="1" LastChildFill="False">
+            <StackPanel
+                Margin="20,10"
+                DockPanel.Dock="Top" Orientation="Horizontal">
+                <TextBlock Text="状态:"/>
+                <ComboBox>
+                    <ComboBoxItem>待办</ComboBoxItem>
+                    <ComboBoxItem>已完成</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <TextBox Margin="20,0" md:HintAssist.Hint="请输入待办概要" DockPanel.Dock="Top"/>
+
+            <TextBox Margin="20,10" 
+                     MinHeight="100"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     md:HintAssist.Hint="请输入待办内容" DockPanel.Dock="Top"/>
+        </DockPanel>
+
+        <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="取消" Margin="0,0,10,0" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="确定"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

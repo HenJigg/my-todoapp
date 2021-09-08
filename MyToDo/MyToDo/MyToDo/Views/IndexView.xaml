@@ -111,9 +111,10 @@
                         FontSize="20"
                         FontWeight="Bold"
                         Text="待办事项" />
-                    <Button
+                    <Button  Command="{Binding ExecuteCommand}"
+                             CommandParameter="新增待办"
                         Width="30"
-                        Height="30"
+                        Height="30" 
                         VerticalAlignment="Top"
                         DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignFloatingActionAccentButton}">
@@ -166,6 +167,8 @@
                     <Button
                         Width="30"
                         Height="30"
+                        Command="{Binding ExecuteCommand}"
+                             CommandParameter="新增备忘录"
                         VerticalAlignment="Top"
                         DockPanel.Dock="Right"
                         Style="{StaticResource MaterialDesignFloatingActionAccentButton}">
