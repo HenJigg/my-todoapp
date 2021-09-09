@@ -37,8 +37,10 @@
         </DockPanel>
 
         <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
-            <Button Content="取消" Margin="0,0,10,0" Style="{StaticResource MaterialDesignOutlinedButton}"/>
-            <Button Content="确定"/>
+            <Button Content="取消" Margin="0,0,10,0"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="确定"      Command="{Binding SaveCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

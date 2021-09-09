@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="MyToDo.Views.MsgView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyToDo.Views"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+              Width="380" Height="220"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition  Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding Title}" d:Text="温馨提示" Padding="5" FontSize="14"/>
+
+        <TextBlock Grid.Row="1" Padding="15,0" VerticalAlignment="Center"
+            d:Text="确认删除该数据吗？" FontSize="14"
+            Text="{Binding Content}"/>
+
+        <StackPanel Margin="10" Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+            <Button Content="取消" Margin="0,0,10,0"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"/>
+            <Button Content="确定"      Command="{Binding SaveCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
