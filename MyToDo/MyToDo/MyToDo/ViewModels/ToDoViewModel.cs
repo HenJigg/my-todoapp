@@ -229,7 +229,10 @@ namespace MyToDo.ViewModels
         public override void OnNavigatedTo(NavigationContext navigationContext)
         {
             base.OnNavigatedTo(navigationContext);
-
+            if (navigationContext.Parameters.ContainsKey("Value"))
+                SelectedIndex = navigationContext.Parameters.GetValue<int>("Value");
+            else
+                SelectedIndex = 0;
             GetDataAsync();
         }
     }

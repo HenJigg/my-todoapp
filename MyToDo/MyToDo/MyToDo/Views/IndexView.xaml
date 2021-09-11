@@ -6,9 +6,14 @@
     xmlns:local="clr-namespace:MyToDo.Views"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:cv="clr-namespace:MyToDo.Common.Converters"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <cv:IntToBoolConveter x:Key="intToBool"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -19,7 +24,7 @@
         <TextBlock
             Margin="15,10"
             FontSize="22"
-            Text="你好，痕迹！今天是2021-08-28 星期六" />
+            Text="{Binding Title}" />
 
         <ItemsControl Grid.Row="1" ItemsSource="{Binding TaskBars}">
             <ItemsControl.ItemsPanel>
@@ -34,6 +39,12 @@
                         Margin="10"
                         Background="{Binding Color}"
                         CornerRadius="5">
+                        <Border.InputBindings>
+                            <MouseBinding MouseAction="LeftClick"
+                                          Command="{Binding DataContext.NavigateCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl}}"
+                                          CommandParameter="{Binding}"/>
+                        </Border.InputBindings>
+
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
@@ -122,14 +133,26 @@
                     </Button>
                 </DockPanel>
 
-                <ListBox
+                <ListBox x:Name="todoList"
                     HorizontalContentAlignment="Stretch"
-                    ItemsSource="{Binding ToDoDtos}"
+                    ItemsSource="{Binding Summary.ToDoList}"
                     ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding EditToDoCommand}"
+                                                   CommandParameter="{Binding ElementName=todoList,Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <DockPanel MaxHeight="80" LastChildFill="False">
-                                <ToggleButton DockPanel.Dock="Right" />
+                                <ToggleButton DockPanel.Dock="Right"
+                                              IsChecked="{Binding Status,Converter={StaticResource intToBool}}"
+                                              Command="{Binding DataContext.ToDoCompltedCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}"
+                                              />
                                 <StackPanel>
                                     <TextBlock
                                         FontSize="16"
@@ -176,7 +199,15 @@
                     </Button>
                 </DockPanel>
 
-                <ListBox ItemsSource="{Binding MemoDtos}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox
+                    x:Name="memoList"
+                    ItemsSource="{Binding Summary.MemoList}" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding EditMemoCommand}"
+                                                   CommandParameter="{Binding ElementName=memoList,Path=SelectedItem}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel MaxHeight="80">

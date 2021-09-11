@@ -29,5 +29,12 @@ namespace MyToDo.Service
                 $"&status={parameter.Status}";
             return await client.ExecuteAsync<PagedList<ToDoDto>>(request);
         }
+
+        public async Task<ApiResponse<SummaryDto>> SummaryAsync()
+        {
+            BaseRequest request = new BaseRequest();
+            request.Route = "api/ToDo/Summary";
+            return await client.ExecuteAsync<SummaryDto>(request);
+        }
     }
 }

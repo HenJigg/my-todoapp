@@ -139,11 +139,11 @@
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding Status}" Value="0">
-                                                            <Setter Property="Background" Value="#3CB371"/>
+                                                            <Setter Property="Background" Value="#1E90FF"/>
                                                         </DataTrigger>
 
                                                         <DataTrigger Binding="{Binding Status}" Value="1">
-                                                            <Setter Property="Background" Value="#1E90FF"/>
+                                                            <Setter Property="Background" Value="#3CB371"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>

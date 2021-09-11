@@ -26,7 +26,7 @@ namespace MyToDo.Common.Models
             get { return icon; }
             set { icon = value; }
         }
-         
+
         /// <summary>
         /// 标题
         /// </summary>
@@ -35,14 +35,14 @@ namespace MyToDo.Common.Models
             get { return title; }
             set { title = value; }
         }
-         
+
         /// <summary>
         /// 内容
         /// </summary>
         public string Content
         {
             get { return content; }
-            set { content = value; }
+            set { content = value; RaisePropertyChanged(); }
         }
 
         /// <summary>

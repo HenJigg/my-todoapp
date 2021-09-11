@@ -19,10 +19,12 @@
 
         <DockPanel Grid.Row="1" LastChildFill="False"> 
 
-            <TextBox Margin="20,0" md:HintAssist.Hint="请输入备忘录概要" DockPanel.Dock="Top"/>
+            <TextBox Margin="20,0"
+                     Text="{Binding Model.Title}"
+                     md:HintAssist.Hint="请输入备忘录概要" DockPanel.Dock="Top"/>
 
             <TextBox Margin="20,10" 
-                     MinHeight="100"
+                     MinHeight="100" Text="{Binding Model.Content}"
                      AcceptsReturn="True"
                      TextWrapping="Wrap"
                      md:HintAssist.Hint="请输入备忘录内容" DockPanel.Dock="Top"/>

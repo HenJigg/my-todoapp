@@ -30,6 +30,9 @@ namespace MyToDo.Api.Controllers
         [HttpGet]
         public async Task<ApiResponse> GetAll([FromQuery] ToDoParameter param) => await service.GetAllAsync(param);
 
+        [HttpGet]
+        public async Task<ApiResponse> Summary() => await service.Summary();
+
         [HttpPost]
         public async Task<ApiResponse> Add([FromBody] ToDoDto model) => await service.AddAsync(model);
 
