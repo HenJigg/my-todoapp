@@ -4,11 +4,17 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\login.png" />
     <None Remove="Images\user.jpg" />
     <None Remove="Images\wind.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\login.png" />
     <Resource Include="Images\user.jpg" />
     <Resource Include="Images\wind.png" />
   </ItemGroup>
