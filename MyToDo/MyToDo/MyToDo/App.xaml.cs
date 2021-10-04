@@ -34,9 +34,9 @@ namespace MyToDo
 
             dialog.ShowDialog("LoginView", callback =>
             {
-                if (callback.Result == ButtonResult.OK)
+                if (callback.Result != ButtonResult.OK)
                 {
-                    Application.Current.Shutdown();
+                    Environment.Exit(0);
                     return;
                 }
 
@@ -53,6 +53,7 @@ namespace MyToDo
                 .Register<HttpRestClient>(made: Parameters.Of.Type<string>(serviceKey: "webUrl"));
             containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5000/", serviceKey: "webUrl");
 
+            containerRegistry.Register<ILoginService, LoginService>();
             containerRegistry.Register<IToDoService, ToDoService>();
             containerRegistry.Register<IMemoService, MemoService>();
             containerRegistry.Register<IDialogHostService, DialogHostService>();
