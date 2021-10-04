@@ -1,5 +1,8 @@
-﻿using MyToDo.Service;
+﻿using MyToDo.Extensions;
+using MyToDo.Service;
+using MyToDo.Shared.Dtos;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
@@ -12,10 +15,12 @@ namespace MyToDo.ViewModels.Dialogs
 {
     public class LoginViewModel : BindableBase, IDialogAware
     {
-        public LoginViewModel(ILoginService loginService)
+        public LoginViewModel(ILoginService loginService, IEventAggregator aggregator)
         {
+            UserDto = new ResgiterUserDto();
             ExecuteCommand = new DelegateCommand<string>(Execute);
             this.loginService = loginService;
+            this.aggregator = aggregator;
         }
 
         public string Title { get; set; } = "ToDo";
@@ -38,6 +43,15 @@ namespace MyToDo.ViewModels.Dialogs
 
         #region Login
 
+        private int selectIndex;
+
+        public int SelectIndex
+        {
+            get { return selectIndex; }
+            set { selectIndex = value; RaisePropertyChanged(); }
+        }
+
+
         public DelegateCommand<string> ExecuteCommand { get; private set; }
 
 
@@ -51,6 +65,7 @@ namespace MyToDo.ViewModels.Dialogs
 
         private string passWord;
         private readonly ILoginService loginService;
+        private readonly IEventAggregator aggregator;
 
         public string PassWord
         {
@@ -64,7 +79,18 @@ namespace MyToDo.ViewModels.Dialogs
             {
                 case "Login": Login(); break;
                 case "LoginOut": LoginOut(); break;
+                case "Resgiter": Resgiter(); break;
+                case "ResgiterPage": SelectIndex = 1; break;
+                case "Return": SelectIndex = 0; break;
             }
+        }
+
+        private ResgiterUserDto userDto;
+
+        public ResgiterUserDto UserDto
+        {
+            get { return userDto; }
+            set { userDto = value; RaisePropertyChanged(); }
         }
 
         async void Login()
@@ -81,12 +107,34 @@ namespace MyToDo.ViewModels.Dialogs
                 PassWord = PassWord
             });
 
-            if (loginResult.Status)
+            if (loginResult != null && loginResult.Status)
             {
                 RequestClose?.Invoke(new DialogResult(ButtonResult.OK));
             }
+            else
+            {
+                //登录失败提示...
+                aggregator.SendMessage(loginResult.Message);
+            }
+        }
 
-            //登录失败提示...
+        private async void Resgiter()
+        {
+            var resgiterResult = await loginService.Resgiter(new Shared.Dtos.UserDto()
+            {
+                Account = UserDto.Account,
+                UserName = UserDto.UserName,
+                PassWord = UserDto.PassWord
+            });
+
+            if (resgiterResult != null && resgiterResult.Status)
+            {
+                aggregator.SendMessage("注册成功");
+                //注册成功,返回登录页页面
+                SelectIndex = 0;
+            }
+            else
+                aggregator.SendMessage(resgiterResult.Message);
         }
 
         void LoginOut()
