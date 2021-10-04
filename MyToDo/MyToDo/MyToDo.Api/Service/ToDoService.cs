@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using MyToDo.Shared;
 
 namespace MyToDo.Api.Service
 {
@@ -129,7 +130,7 @@ namespace MyToDo.Api.Service
                 summary.ToDoList = new ObservableCollection<ToDoDto>(Mapper.Map<List<ToDoDto>>(todos.Where(t => t.Status == 0)));
                 summary.MemoList = new ObservableCollection<MemoDto>(Mapper.Map<List<MemoDto>>(memos));
 
-                return new ApiResponse(true,summary);
+                return new ApiResponse(true, summary);
             }
             catch (Exception ex)
             {
