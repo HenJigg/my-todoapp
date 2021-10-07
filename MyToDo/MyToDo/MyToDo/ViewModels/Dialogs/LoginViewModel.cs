@@ -114,12 +114,27 @@ namespace MyToDo.ViewModels.Dialogs
             else
             {
                 //登录失败提示...
-                aggregator.SendMessage(loginResult.Message);
+                aggregator.SendMessage(loginResult.Message, "Login");
             }
         }
 
         private async void Resgiter()
         {
+            if (string.IsNullOrWhiteSpace(UserDto.Account) ||
+                string.IsNullOrWhiteSpace(UserDto.UserName) ||
+                string.IsNullOrWhiteSpace(UserDto.PassWord) ||
+                string.IsNullOrWhiteSpace(UserDto.NewPassWord))
+            {
+                aggregator.SendMessage("请输入完整的注册信息！", "Login");
+                return;
+            }
+
+            if (UserDto.PassWord != UserDto.NewPassWord)
+            {
+                aggregator.SendMessage("密码不一致,请重新输入！", "Login");
+                return;
+            }
+
             var resgiterResult = await loginService.Resgiter(new Shared.Dtos.UserDto()
             {
                 Account = UserDto.Account,
@@ -129,12 +144,12 @@ namespace MyToDo.ViewModels.Dialogs
 
             if (resgiterResult != null && resgiterResult.Status)
             {
-                aggregator.SendMessage("注册成功");
+                aggregator.SendMessage("注册成功", "Login");
                 //注册成功,返回登录页页面
                 SelectIndex = 0;
             }
             else
-                aggregator.SendMessage(resgiterResult.Message);
+                aggregator.SendMessage(resgiterResult.Message, "Login");
         }
 
         void LoginOut()
