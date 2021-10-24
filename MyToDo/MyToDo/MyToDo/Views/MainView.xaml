@@ -45,7 +45,7 @@
                         <TextBlock
                             Margin="0,10"
                             HorizontalAlignment="Center"
-                            Text="痕迹gg" />
+                            Text="{Binding UserName}" />
                     </StackPanel>
 
                     <ListBox
@@ -54,7 +54,7 @@
                         ItemsSource="{Binding MenuBars}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding NavigateCommand}" CommandParameter="{Binding ElementName=menuBar, Path=SelectedItem}" />
+                                <i:InvokeCommandAction Command="{Binding NavigateCommand}" CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListBox}}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <ListBox.ItemTemplate>
@@ -84,18 +84,6 @@
                     Mode="PrimaryMid">
                     <DockPanel LastChildFill="True">
                         <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                            <Image
-                                Width="25"
-                                Height="25"
-                                Source="/Images/user.jpg">
-                                <Image.Clip>
-                                    <EllipseGeometry
-                                        Center="12.5,12.5"
-                                        RadiusX="12.5"
-                                        RadiusY="12.5" />
-                                </Image.Clip>
-                            </Image>
-
                             <Button
                                 x:Name="btnMin"
                                 Content="—"
@@ -109,6 +97,29 @@
                                 Content="✕"
                                 Style="{StaticResource MaterialDesignFlatMidBgButton}" />
                         </StackPanel>
+
+                        <materialDesign:PopupBox DockPanel.Dock="Right">
+                            <materialDesign:PopupBox.ToggleContent>
+                                <Image
+                                Width="25"
+                                Height="25"
+                                Source="/Images/user.jpg">
+                                    <Image.Clip>
+                                        <EllipseGeometry
+                                        Center="12.5,12.5"
+                                        RadiusX="12.5"
+                                        RadiusY="12.5" />
+                                    </Image.Clip>
+                                </Image>
+                            </materialDesign:PopupBox.ToggleContent>
+
+                            <StackPanel>
+                                <!--<Button Command="{Binding AppCenterCommand}" Content="个人中心"/>-->
+                                <Button Command="{Binding LoginOutCommand}" Content="注销当前账户"/>
+                            </StackPanel>
+                        </materialDesign:PopupBox>
+
+
 
                         <StackPanel Orientation="Horizontal">
                             <ToggleButton
@@ -149,7 +160,7 @@
                 </materialDesign:ColorZone>
 
                 <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static ext:PrismManager.MainViewRegionName}" />
-            </Grid> 
+            </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
 </Window>

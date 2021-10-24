@@ -28,15 +28,33 @@ namespace MyToDo
             return Container.Resolve<MainView>();
         }
 
+        public static void LoginOut(IContainerProvider containerProvider)
+        {
+            Current.MainWindow.Hide();
+
+            var dialog = containerProvider.Resolve<IDialogService>();
+
+            dialog.ShowDialog("LoginView", callback =>
+            {
+                if (callback.Result != ButtonResult.OK)
+                {
+                    Environment.Exit(0);
+                    return;
+                } 
+
+                Current.MainWindow.Show();
+            });
+        }
+
         protected override void OnInitialized()
         {
             var dialog = Container.Resolve<IDialogService>();
 
             dialog.ShowDialog("LoginView", callback =>
             {
-                if (callback.Result == ButtonResult.OK)
+                if (callback.Result != ButtonResult.OK)
                 {
-                    Application.Current.Shutdown();
+                    Environment.Exit(0);
                     return;
                 }
 
@@ -51,8 +69,9 @@ namespace MyToDo
         {
             containerRegistry.GetContainer()
                 .Register<HttpRestClient>(made: Parameters.Of.Type<string>(serviceKey: "webUrl"));
-            containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5000/", serviceKey: "webUrl");
+            containerRegistry.GetContainer().RegisterInstance(@"http://localhost:3333/", serviceKey: "webUrl");
 
+            containerRegistry.Register<ILoginService, LoginService>();
             containerRegistry.Register<IToDoService, ToDoService>();
             containerRegistry.Register<IMemoService, MemoService>();
             containerRegistry.Register<IDialogHostService, DialogHostService>();
