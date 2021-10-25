@@ -15,7 +15,7 @@ namespace MyToDo.Shared.Dtos
             get { return userName; }
             set { userName = value; OnPropertyChanged(); }
         }
-         
+
         private string account;
 
         public string Account
@@ -34,7 +34,7 @@ namespace MyToDo.Shared.Dtos
 
         private string newpassWord;
 
-        public string NewpassWord
+        public string NewPassWord
         {
             get { return newpassWord; }
             set { newpassWord = value; OnPropertyChanged(); }

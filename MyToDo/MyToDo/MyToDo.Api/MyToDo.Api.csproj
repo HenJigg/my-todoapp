@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="to.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

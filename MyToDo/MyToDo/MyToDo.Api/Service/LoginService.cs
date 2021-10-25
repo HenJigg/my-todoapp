@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MyToDo.Api.Context;
+using MyToDo.Shared;
 using MyToDo.Shared.Dtos;
 using MyToDo.Shared.Extensions;
 using System;
@@ -33,7 +34,12 @@ namespace MyToDo.Api.Service
                 if (model == null)
                     return new ApiResponse("账号或密码错误,请重试！");
 
-                return new ApiResponse(true, model);
+                return new ApiResponse(true, new UserDto()
+                {
+                    Account = model.Account,
+                    UserName = model.UserName,
+                    Id = model.Id
+                });
             }
             catch (Exception ex)
             {
@@ -54,7 +60,6 @@ namespace MyToDo.Api.Service
 
                 model.CreateDate = DateTime.Now;
                 model.PassWord = model.PassWord.GetMD5();
-
                 await repository.InsertAsync(model);
 
                 if (await work.SaveChangesAsync() > 0)

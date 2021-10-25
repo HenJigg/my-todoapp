@@ -26,10 +26,10 @@ namespace MyToDo.Views
         {
             InitializeComponent();
 
-            //注册消息提示
+            //注册提示消息
             aggregator.ResgiterMessage(arg =>
             {
-                LoginSnackBar.MessageQueue.Enqueue(arg.Message);
+                LoginSnakeBar.MessageQueue.Enqueue(arg.Message);
             }, "Login");
         }
     }

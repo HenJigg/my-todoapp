@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MyToDo.Views"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:pass="clr-namespace:MyToDo.Common"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:pass="clr-namespace:MyToDo.Extensions"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
@@ -25,30 +27,27 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <md:Snackbar x:Name="LoginSnakeBar" Panel.ZIndex="1"  Grid.ColumnSpan="2"
+                                 MessageQueue="{md:MessageQueue}"/>
+        
         <Image Source="/Images/login.png" Margin="50"/>
 
-        <md:Snackbar x:Name="LoginSnackBar" Panel.ZIndex="1"
-                     MessageQueue="{md:MessageQueue}" Grid.ColumnSpan="2"/>
-
-        <md:Transitioner Grid.Column="1" SelectedIndex="{Binding SelectedIndex}">
+        <md:Transitioner SelectedIndex="{Binding SelectIndex,FallbackValue=0}" Grid.Column="1">
             <md:TransitionerSlide>
-                <DockPanel Grid.Column="1" VerticalAlignment="Center" Margin="15">
+                <DockPanel  VerticalAlignment="Center" Margin="15">
                     <TextBlock Text="欢迎使用" FontSize="22" FontWeight="Bold"
                        Margin="0,10" DockPanel.Dock="Top"/>
 
-                    <TextBox Margin="0,10" DockPanel.Dock="Top" 
-                     Text="{Binding Account}"
-                     md:HintAssist.Hint="请输入账号"/>
+                    <TextBox  Text="{Binding UserName}" Margin="0,10" DockPanel.Dock="Top" md:HintAssist.Hint="请输入账号"/>
                     <PasswordBox Margin="0,10" DockPanel.Dock="Top" 
-                         pass:PassWordExtensions.PassWord="{Binding PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          pass:PassWordExtensions.Password="{Binding PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          md:HintAssist.Hint="请输入密码">
                         <i:Interaction.Behaviors>
-                            <pass:PasswordBehavior/>
+                            <pass:PasswordBoxBehavior/>
                         </i:Interaction.Behaviors>
                     </PasswordBox>
 
-                    <Button Content="登录系统" 
-                    Command="{Binding ExecuteCommand}"
+                    <Button Content="登录系统" Command="{Binding ExecuteCommand}" 
                     CommandParameter="Login"
                     DockPanel.Dock="Top"/>
 
@@ -56,8 +55,7 @@
                         <TextBlock Text="注册账号">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
-                                    <i:InvokeCommandAction Command="{Binding ExecuteCommand}"
-                                                           CommandParameter="Go"/>
+                                    <i:InvokeCommandAction Command="{Binding ExecuteCommand}" CommandParameter="ResgiterPage"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </TextBlock>
@@ -67,42 +65,38 @@
             </md:TransitionerSlide>
 
             <md:TransitionerSlide>
-                <DockPanel VerticalAlignment="Center" Margin="15">
-                    <TextBlock Text="注册账号" FontSize="22" DockPanel.Dock="Top"  FontWeight="Bold"/>
+                <DockPanel  VerticalAlignment="Center" Margin="15">
+                    <TextBlock Text="注册账号" FontSize="22" FontWeight="Bold"
+                       Margin="0,10" DockPanel.Dock="Top"/>
 
-                    <TextBox Text="{Binding UserDto.Account}" 
-                             md:HintAssist.Hint="请输入账号"
-                             DockPanel.Dock="Top"  Margin="0,10"/>
-                    <TextBox Text="{Binding UserDto.UserName}" 
-                             md:HintAssist.Hint="请输入用户名"
-                             DockPanel.Dock="Top"  Margin="0,10"/>
+                    <TextBox  Text="{Binding UserDto.Account}" Margin="0,5" DockPanel.Dock="Top" md:HintAssist.Hint="请输入用户名"/>
+                    <TextBox  Text="{Binding UserDto.UserName}" Margin="0,5" DockPanel.Dock="Top" md:HintAssist.Hint="请输入账号"/>
 
-                    <PasswordBox Margin="0,10" DockPanel.Dock="Top"  
-                         pass:PassWordExtensions.PassWord="{Binding UserDto.PassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <PasswordBox Margin="0,5" DockPanel.Dock="Top" 
+                          pass:PassWordExtensions.Password="{Binding UserDto.PassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          md:HintAssist.Hint="请输入密码">
                         <i:Interaction.Behaviors>
-                            <pass:PasswordBehavior/>
+                            <pass:PasswordBoxBehavior/>
                         </i:Interaction.Behaviors>
                     </PasswordBox>
 
-                    <PasswordBox Margin="0,10" DockPanel.Dock="Top" 
-                         pass:PassWordExtensions.PassWord="{Binding UserDto.NewpassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <PasswordBox Margin="0,5" DockPanel.Dock="Top" 
+                          pass:PassWordExtensions.Password="{Binding UserDto.NewPassWord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          md:HintAssist.Hint="请再次输入密码">
                         <i:Interaction.Behaviors>
-                            <pass:PasswordBehavior/>
+                            <pass:PasswordBoxBehavior/>
                         </i:Interaction.Behaviors>
                     </PasswordBox>
 
-                    <Button Content="注册账号" DockPanel.Dock="Top"
-                            Command="{Binding ExecuteCommand}"
-                            CommandParameter="Resgiter" Margin="0,5"
-                            />
+                    <Button Content="注册账号" Command="{Binding ExecuteCommand}"  
+                            CommandParameter="Resgiter" DockPanel.Dock="Top"/>
 
-                    <Button Content="返回账号" DockPanel.Dock="Top"
-                            Command="{Binding ExecuteCommand}" Margin="0,5"
-                            CommandParameter="Return" /> 
+                    <Button Content="返回登录" Command="{Binding ExecuteCommand}" 
+                            Style="{StaticResource MaterialDesignOutlinedButton}"
+                            Margin="0,10"
+                            CommandParameter="Return" DockPanel.Dock="Top"/>
                 </DockPanel>
-            </md:TransitionerSlide> 
+            </md:TransitionerSlide>
         </md:Transitioner>
     </Grid>
 </UserControl>
