@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using MyToDo.Api.Context;
 using MyToDo.Shared;
-using MyToDo.Shared.Dtos;
-using MyToDo.Shared.Extensions;
+using MyToDo.Shared.Dtos; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
