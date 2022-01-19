@@ -25,19 +25,19 @@ Service: ASP.NET Core WebApi
 
 ### 截图
 
-![](..\Screenshot\Login.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/Login.png)
 
-![](..\Screenshot\Resgiter.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/Resgiter.png)
 
-![](..\Screenshot\Main.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/Main.png)
 
-![](..\Screenshot\ToDo.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/ToDo.png)
 
-![](..\Screenshot\Add.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/Add.png)
 
-![](..\Screenshot\Settings.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/Settings.png)
 
-![](..\Screenshot\swagger.png)
+![](https://github.com/HenJigg/MyToDoApp/blob/main/Screenshot/swagger.png)
 
 ### 鸣谢
 
