@@ -1,10 +1,10 @@
 ﻿using DryIoc;
-using MyToDo.Common;
-using MyToDo.Service;
-using MyToDo.ViewModels;
-using MyToDo.ViewModels.Dialogs;
-using MyToDo.Views;
-using MyToDo.Views.Dialogs;
+using Detection_System.Common;
+using Detection_System.Service;
+using Detection_System.ViewModels;
+using Detection_System.ViewModels.Dialogs;
+using Detection_System.Views;
+using Detection_System.Views.Dialogs;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Services.Dialogs;
@@ -16,7 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace MyToDo
+namespace Detection_System
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -36,11 +36,11 @@ namespace MyToDo
 
             dialog.ShowDialog("LoginView", callback =>
             {
-                if (callback.Result != ButtonResult.OK)
-                {
-                    Environment.Exit(0);
-                    return;
-                } 
+                //if (callback.Result != ButtonResult.OK)
+                //{
+                //    Environment.Exit(0);
+                //    return;
+                //}
 
                 Current.MainWindow.Show();
             });
@@ -52,11 +52,11 @@ namespace MyToDo
 
             dialog.ShowDialog("LoginView", callback =>
             {
-                if (callback.Result != ButtonResult.OK)
-                {
-                    Environment.Exit(0);
-                    return;
-                }
+                //if (callback.Result != ButtonResult.OK)
+                //{
+                //    Environment.Exit(0);
+                //    return;
+                //}
 
                 var service = App.Current.MainWindow.DataContext as IConfigureService;
                 if (service != null)
@@ -85,7 +85,7 @@ namespace MyToDo
             containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
             containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
             containerRegistry.RegisterForNavigation<ToDoView, ToDoViewModel>();
-            containerRegistry.RegisterForNavigation<MemoView, MemoViewModel>();
+           
             containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
         }
     }

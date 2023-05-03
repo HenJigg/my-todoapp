@@ -1,4 +1,4 @@
-﻿namespace MyToDo.Shared.Contact
+﻿namespace Detection_System.Shared.Contact
 {
 
     using System.Collections.Generic;

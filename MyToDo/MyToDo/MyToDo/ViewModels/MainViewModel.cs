@@ -1,6 +1,7 @@
-﻿using MyToDo.Common;
-using MyToDo.Common.Models;
-using MyToDo.Extensions;
+﻿using Detection_System.Common;
+using Detection_System.Common.Models;
+using Detection_System.Extensions;
+using MySqlConnector;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -12,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels
+namespace Detection_System.ViewModels
 {
     public class MainViewModel : BindableBase, IConfigureService
     {
@@ -48,6 +49,16 @@ namespace MyToDo.ViewModels
               });
             this.containerProvider = containerProvider;
             this.regionManager = regionManager;
+
+
+            using var connection = new MySqlConnection("Server=myserver;User ID=mylogin;Password=mypass;Database=mydatabase");
+            connection.Open();
+
+            using var command = new MySqlCommand("SELECT field FROM table;", connection);
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+                Console.WriteLine(reader.GetString(0));
+
         }
 
         private void Navigate(MenuBar obj)
@@ -90,9 +101,11 @@ namespace MyToDo.ViewModels
         /// </summary>
         public void Configure()
         {
-            UserName = AppSession.UserName;
+            UserName = AppSession.UserName; 
             CreateMenuBar();
-            regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("IndexView");
+            //regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("IndexView");
         }
+
+
     }
 }

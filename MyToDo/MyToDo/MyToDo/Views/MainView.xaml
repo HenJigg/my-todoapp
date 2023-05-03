@@ -1,11 +1,11 @@
 ﻿<Window
-    x:Class="MyToDo.Views.MainView"
+    x:Class="Detection_System.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:ext="clr-namespace:MyToDo.Extensions"
+    xmlns:ext="clr-namespace:Detection_System.Extensions"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local="clr-namespace:MyToDo"
+    xmlns:local="clr-namespace:Detection_System"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -24,7 +24,7 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
-    <materialDesign:DialogHost
+<materialDesign:DialogHost
         DialogTheme="Inherit"  x:Name="DialogHost"
         Identifier="Root" >
         <materialDesign:DrawerHost x:Name="drawerHost" IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
@@ -160,8 +160,8 @@
                     </DockPanel>
                 </materialDesign:ColorZone>
 
-                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static ext:PrismManager.MainViewRegionName}" />
+                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ss" />
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
-</Window>
+    </Window>

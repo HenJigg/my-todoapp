@@ -1,6 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
-using MyToDo.Common;
-using MyToDo.Shared.Dtos;
+using Detection_System.Common;
+using Detection_System.Shared.Dtos;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels.Dialogs
+namespace Detection_System.ViewModels.Dialogs
 {
     public class AdddMemoViewModel : BindableBase, IDialogHostAware
     {

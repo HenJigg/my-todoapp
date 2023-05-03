@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyToDo.Api.Context;
-using MyToDo.Api.Service;
-using MyToDo.Shared.Dtos;
-using MyToDo.Shared.Parameters;
+using Detection_System.Api.Context;
+using Detection_System.Api.Service;
+using Detection_System.Shared.Dtos;
+using Detection_System.Shared.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyToDo.Api.Controllers
+namespace Detection_System.Api.Controllers
 {
     /// <summary>
     /// 账户控制器

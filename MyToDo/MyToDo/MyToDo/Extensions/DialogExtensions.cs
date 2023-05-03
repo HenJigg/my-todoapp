@@ -1,5 +1,5 @@
-﻿using MyToDo.Common;
-using MyToDo.Common.Events;
+﻿using Detection_System.Common;
+using Detection_System.Common.Events;
 using Prism.Events;
 using Prism.Services.Dialogs;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Extensions
+namespace Detection_System.Extensions
 {
     public static class DialogExtensions
     {

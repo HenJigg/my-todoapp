@@ -1,4 +1,4 @@
-﻿namespace MyToDo.Api
+﻿namespace Detection_System.Api
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
     using Microsoft.EntityFrameworkCore.Query;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using Microsoft.EntityFrameworkCore;
-    using MyToDo.Shared.Contact;
+    using Detection_System.Shared.Contact;
 
     /// <summary>
     /// Defines the interfaces for generic repository.

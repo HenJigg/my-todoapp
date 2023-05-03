@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyToDo.Api.Context;
+using Detection_System.Api.Context;
 
-namespace MyToDo.Api.Migrations
+namespace Detection_System.Api.Migrations
 {
     [DbContext(typeof(MyToDoContext))]
     [Migration("20210831130616_MyToDo")]

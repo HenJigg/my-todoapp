@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Extensions
+namespace Detection_System.Extensions
 {
     public static class PrismManager
     {

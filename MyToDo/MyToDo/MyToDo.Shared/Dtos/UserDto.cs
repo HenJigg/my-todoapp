@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Shared.Dtos
+namespace Detection_System.Shared.Dtos
 {
     public class UserDto : BaseDto
     {

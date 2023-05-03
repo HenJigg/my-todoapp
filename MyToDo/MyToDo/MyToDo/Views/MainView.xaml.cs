@@ -1,5 +1,5 @@
-﻿using MyToDo.Common;
-using MyToDo.Extensions;
+﻿using Detection_System.Common;
+using Detection_System.Extensions;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MyToDo.Views
+namespace Detection_System.Views
 {
     /// <summary>
     /// MainView.xaml 的交互逻辑

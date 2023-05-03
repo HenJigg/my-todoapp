@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyToDo.Api.Context;
+using Detection_System.Api.Context;
 
-namespace MyToDo.Api.Migrations
+namespace Detection_System.Api.Migrations
 {
     [DbContext(typeof(MyToDoContext))]
     partial class MyToDoContextModelSnapshot : ModelSnapshot

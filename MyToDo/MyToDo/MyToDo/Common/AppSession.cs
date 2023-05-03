@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Common
+namespace Detection_System.Common
 {
     public static class AppSession
     {

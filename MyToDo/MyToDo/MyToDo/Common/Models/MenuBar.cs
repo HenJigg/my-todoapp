@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Common.Models
+namespace Detection_System.Common.Models
 {
     /// <summary>
     /// 系统导航菜单实体类

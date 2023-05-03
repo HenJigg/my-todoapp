@@ -1,4 +1,4 @@
-﻿using MyToDo.Extensions;
+﻿using Detection_System.Extensions;
 using Prism.Events;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels
+namespace Detection_System.ViewModels
 {
     public class NavigationViewModel : BindableBase, INavigationAware
     {

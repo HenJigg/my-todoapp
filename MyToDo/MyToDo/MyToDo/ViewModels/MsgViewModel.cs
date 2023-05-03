@@ -1,5 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
-using MyToDo.Common;
+using Detection_System.Common;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels
+namespace Detection_System.ViewModels
 {
     public class MsgViewModel : BindableBase, IDialogHostAware
     {
