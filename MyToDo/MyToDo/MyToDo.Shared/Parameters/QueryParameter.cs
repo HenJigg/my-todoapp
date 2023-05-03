@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Shared.Parameters
+namespace Detection_System.Shared.Parameters
 {
     public class QueryParameter
     {

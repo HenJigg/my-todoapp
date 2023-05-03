@@ -1,11 +1,11 @@
-﻿using MyToDo.Shared.Dtos;
+﻿using Detection_System.Shared.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Service
+namespace Detection_System.Service
 {
     public class MemoService : BaseService<MemoDto>, IMemoService
     {

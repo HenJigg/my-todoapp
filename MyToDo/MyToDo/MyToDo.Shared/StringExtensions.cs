@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Shared
+namespace Detection_System.Shared
 {
     public static class StringExtensions
     {

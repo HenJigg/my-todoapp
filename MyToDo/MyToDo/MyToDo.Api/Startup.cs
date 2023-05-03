@@ -8,16 +8,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using MyToDo.Api.Context;
-using MyToDo.Api.Context.Repository;
-using MyToDo.Api.Extensions;
-using MyToDo.Api.Service;
+using Detection_System.Api.Context;
+using Detection_System.Api.Context.Repository;
+using Detection_System.Api.Extensions;
+using Detection_System.Api.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyToDo.Api
+namespace Detection_System.Api
 {
     public class Startup
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace MyToDo.Common.Converters
+namespace Detection_System.Common.Converters
 {
     public class IntToBoolConveter : IValueConverter
     {

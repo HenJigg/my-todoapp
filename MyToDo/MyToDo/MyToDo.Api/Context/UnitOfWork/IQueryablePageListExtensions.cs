@@ -1,11 +1,11 @@
-﻿namespace MyToDo.Api
+﻿namespace Detection_System.Api
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
-    using MyToDo.Shared.Contact;
+    using Detection_System.Shared.Contact;
 
     public static class IQueryablePageListExtensions
     {

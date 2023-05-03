@@ -1,6 +1,6 @@
-﻿using MyToDo.Extensions;
-using MyToDo.Service;
-using MyToDo.Shared.Dtos;
+﻿using Detection_System.Extensions;
+using Detection_System.Service;
+using Detection_System.Shared.Dtos;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels.Dialogs
+namespace Detection_System.ViewModels.Dialogs
 {
     public class LoginViewModel : BindableBase, IDialogAware
     {

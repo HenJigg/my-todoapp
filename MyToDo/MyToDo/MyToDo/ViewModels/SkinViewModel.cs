@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace MyToDo.ViewModels
+namespace Detection_System.ViewModels
 {
     public class SkinViewModel : BindableBase
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyToDo.Api.Context
+namespace Detection_System.Api.Context
 {
     public class User : BaseEntity
     {

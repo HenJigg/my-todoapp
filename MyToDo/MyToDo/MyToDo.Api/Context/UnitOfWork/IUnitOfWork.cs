@@ -1,6 +1,6 @@
 ﻿
 
-namespace MyToDo.Api
+namespace Detection_System.Api
 {
     using System;
     using System.Linq;

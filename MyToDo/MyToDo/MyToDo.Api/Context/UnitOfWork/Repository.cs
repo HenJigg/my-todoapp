@@ -1,6 +1,6 @@
 ﻿
 
-namespace MyToDo.Api
+namespace Detection_System.Api
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace MyToDo.Api
     using Microsoft.EntityFrameworkCore.Metadata;
     using Microsoft.EntityFrameworkCore.Query;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
-    using MyToDo.Shared.Contact;
+    using Detection_System.Shared.Contact;
 
     /// <summary>
     /// Represents a default generic repository implements the <see cref="IRepository{TEntity}"/> interface.

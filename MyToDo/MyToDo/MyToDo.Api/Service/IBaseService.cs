@@ -1,10 +1,10 @@
-﻿using MyToDo.Shared.Parameters;
+﻿using Detection_System.Shared.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyToDo.Api.Service
+namespace Detection_System.Api.Service
 {
     public interface IBaseService<T>
     {

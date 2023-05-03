@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.Common.Events
+namespace Detection_System.Common.Events
 {
     public class UpdateModel
     {

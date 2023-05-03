@@ -1,5 +1,5 @@
-﻿using MyToDo.Common.Models;
-using MyToDo.Extensions;
+﻿using Detection_System.Common.Models;
+using Detection_System.Extensions;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels
+namespace Detection_System.ViewModels
 {
     public class SettingsViewModel : BindableBase
     {

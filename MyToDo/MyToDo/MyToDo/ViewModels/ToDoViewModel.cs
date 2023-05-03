@@ -1,9 +1,9 @@
-﻿using MyToDo.Common;
-using MyToDo.Common.Models;
-using MyToDo.Extensions;
-using MyToDo.Service;
-using MyToDo.Shared.Dtos;
-using MyToDo.Shared.Parameters;
+﻿using Detection_System.Common;
+using Detection_System.Common.Models;
+using Detection_System.Extensions;
+using Detection_System.Service;
+using Detection_System.Shared.Dtos;
+using Detection_System.Shared.Parameters;
 using Prism.Commands;
 using Prism.Ioc;
 using Prism.Mvvm;
@@ -15,7 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyToDo.ViewModels
+namespace Detection_System.ViewModels
 {
     public class ToDoViewModel : NavigationViewModel
     {

@@ -1,6 +1,6 @@
-﻿namespace MyToDo.Api
+﻿namespace Detection_System.Api
 {
-    using MyToDo.Shared.Contact;
+    using Detection_System.Shared.Contact;
     using System;
     using System.Collections.Generic;
 

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyToDo.Api
+namespace Detection_System.Api
 {
     public class Program
     {
